@@ -1,0 +1,39 @@
+Options -Indexes
+AddDefaultCharset utf-8
+<IfModule mod_php5.c>
+
+  php_flag allow_call_time_pass_reference 1
+
+  php_flag session.use_trans_sid off
+
+</IfModule>
+
+
+
+<IfModule mod_rewrite.c>
+
+  Options +FollowSymLinks
+
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+  RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+
+  RewriteCond %{REQUEST_FILENAME} !-l
+
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  RewriteCond %{REQUEST_FILENAME} !/febi/url.php$
+
+  RewriteRule ^(.*)$ /febi/url.php [L]
+
+</IfModule>
+
+
+
+<IfModule mod_dir.c>
+
+  DirectoryIndex index.php index.html
+
+</IfModule>

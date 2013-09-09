@@ -1,0 +1,3 @@
+<FilesMatch "[^url\.php]$">
+Deny from all
+</FilesMatch>
