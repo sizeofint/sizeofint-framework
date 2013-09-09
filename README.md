@@ -3,6 +3,7 @@ sizeofint-framework
 
 PHP framework for development php applications.
 
+Current version: 0.4.3
 
 
 Decription
