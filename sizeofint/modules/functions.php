@@ -24,7 +24,7 @@ function randomstringgen() {
 }
 	
 function logtolog($str){
-	file_put_contents(SCRDIR."/febi/logs.txt",date('r')." - ".$str."\n\n",FILE_APPEND);
+	file_put_contents(SCRDIR."/sizeofint/logs.txt",date('r')." - ".$str."\n\n",FILE_APPEND);
 }
 
 function mail_utf8($to, $subject = '(No subject)', $message = '', $header = '') {

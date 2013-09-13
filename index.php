@@ -1,12 +1,12 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/febi/core.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/sizeofint/core.php";
 ?>
 <!DOCTYPE HTML>
 <html>
     <head>
 
         <?
-        $febi->showHead();
+        $soi->showHead();
         ?>
 
     </head>
