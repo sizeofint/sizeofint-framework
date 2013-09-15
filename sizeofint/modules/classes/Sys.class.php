@@ -10,7 +10,11 @@ class Sys {
 		
 		echo FNAME;
 		
-		}
+	}
+	
+	function strlen($string,$u='utf8') {
+		return mb_strlen($string,$u);
+	}
 	
 	
 	

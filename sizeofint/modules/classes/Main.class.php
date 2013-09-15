@@ -41,7 +41,7 @@ class Main extends Sys {
             "",
             $this->csss,
             ((count($this->keyWords) > 1) ? '<meta name="keywords" content="' . implode(",", $this->keyWords) . '" />' : ''),
-            ((ustrlen($this->description) > 1) ? '<meta name="description" content="' . mb_substr(preg_replace('/[^a-zა-ჰ0-9\s,\.\-]/i','',$this->description),0,160,"utf8") . '" />' : '')
+            (($this->strlen($this->description) > 1) ? '<meta name="description" content="' . mb_substr(preg_replace('/[^a-zა-ჰ0-9\s,\.\-]/i','',$this->description),0,160,"utf8") . '" />' : '')
         );
         return $this->reparray;
     }
