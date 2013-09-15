@@ -13,6 +13,7 @@ class Main extends Sys {
     var $reparray = array();
     var $viewStates = array();
     var $lastvsname = ''; // !!!
+	var $headTagsArr=array();
     public static $htmlheaders = true;
     public static $gzip = true;
     public static $showcopyright = true;
@@ -29,6 +30,11 @@ class Main extends Sys {
     }
 
     function repArr() {
+		
+		
+		$this->sortHeadTags();
+		
+		
         $this->reparray = array(
             "<title>" . $this->pageTitle . "</title>",
             $this->headhtml,
@@ -39,6 +45,21 @@ class Main extends Sys {
         );
         return $this->reparray;
     }
+	
+	function sortHeadTags(){
+		$this->headhtml='';
+		$helperarr=array();
+		foreach($this->headTagsArr as $v){
+			$helperarr[]=$v[1];
+		}
+		arsort($helperarr);
+		
+		foreach($helperarr as $k=>$v){
+			$this->headhtml.=$this->headTagsArr[$k][0] . "\n";
+		}
+		
+	}
+	
 
     function showHead() {
         echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n";
@@ -47,15 +68,13 @@ class Main extends Sys {
         echo $this->wr[4] . "\r\n";
         echo $this->wr[1] . "\r\n";
         echo $this->wr[3] . "\r\n";
-		//if(ustrlen($this->description)>1)
-		//	echo '1<meta name="description" content="'.preg_replace('/[^a-zა-ჰ0-9\s,\.-]/i','',$this->description).'" />'."\r\n";
     }
 
     function showcontent($con) {
-        //echo $con;
-        //echo '<pre>'.print_r($this->wr,true).'</pre>';
-        //echo '<pre>'.print_r($this->repArr(),true).'</pre>';
-        //echo $con;
+		
+		if(file_exists(SYSDIRPATH.'/soijs.js'))
+			$this->__addHeadTags('<script type="text/javascript" src="'.SYSURI.'/soijs.js"></script>',10000);
+		
         $con = str_replace($this->wr, $this->repArr(), $con);
         $con = $this->precessvs($con);
 		
@@ -103,10 +122,14 @@ class Main extends Sys {
 
         $this->description = $description;
     }
+	
+	private function __addHeadTags($tagsi,$prior=0) {
+		$this->headTagsArr[]=array($tagsi,$prior);
+    }
+	
 
-    function addHeadTags($tagsi) {
-
-        $this->headhtml.=$tagsi . "\n";
+    function addHeadTags($tagsi,$prior=0) {
+		$this->__addHeadTags($tagsi,(($prior>999)?999:$prior));
     }
 
     function addCss($cssfile) {

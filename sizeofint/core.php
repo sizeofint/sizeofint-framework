@@ -1,6 +1,6 @@
 <?php
 require_once substr(__FILE__, 0, strlen(__FILE__) - strlen("/core.php")) . "/config.php";
-require_once SCRDIR . "/sizeofint/load.php";
+require_once SYSDIRPATH . "/load.php";
 $content='';
 if (DBUSER) {
 	$db = new Db(DBSERVER,DBUSER,DBPASS,DBNAME);
