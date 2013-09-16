@@ -20,12 +20,12 @@ class Main extends Sys {
 
     function Main() {
         $this->wr = array(
-            "#SOI_TITLE_" . md5(time() . SOISALT) . "#",
-            "#SOI_HEADSTRING_" . md5(time() . SOISALT) . "#",
-            "#SOI_JAVASCRIPTTAG_" . md5(time() . SOISALT) . "#",
-            "#SOI_CSSTAG_" . md5(time() . SOISALT) . "#",
-            "#SOI_KEYWORDS_" . md5(time() . SOISALT) . "#",
-            "#SOI_DESCRIPTIONS_" . md5(time() . SOISALT) . "#"
+            "<!--[SOI_TITLE_" . md5(time() . SOISALT) . "]-->",
+            "<!--[SOI_HEADSTRING_" . md5(time() . SOISALT) . "]-->",
+            "<!--[SOI_JAVASCRIPTTAG_" . md5(time() . SOISALT) . "]-->",
+            "<!--[SOI_CSSTAG_" . md5(time() . SOISALT) . "]-->",
+            "<!--[SOI_KEYWORDS_" . md5(time() . SOISALT) . "]-->",
+            "<!--[SOI_DESCRIPTIONS_" . md5(time() . SOISALT) . "]-->"
         );
     }
 
@@ -199,7 +199,7 @@ class Main extends Sys {
 	
 	@return string returns saved string */
     function showViewState($vsname, $ret = false) {
-		$vs_key = "#SOI_VS_" . md5($vsname . time() . SOISALT) . "#";
+		$vs_key = "<!--[SOI_VS_" . md5($vsname . time() . SOISALT) . "]-->";
 		$this->viewStates[$vsname]=array("k"=>$vs_key,"v"=>'');
         if($ret)
 			return $vs_key;
